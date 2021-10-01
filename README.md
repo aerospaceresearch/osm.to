@@ -1,7 +1,26 @@
 # osm.to
 
-This is a landingpage for the [gcp-osm project](https://github.com/aerospaceresearch/gcp-osm)
+Welcome to the landingpage for the OSM.to project.
 
-Dies ist eine einfache Landingpage für das [gcp-osm Projekt](https://github.com/aerospaceresearch/gcp-osm)
+## Mission Statement
 
-More Info/Weitere Informationen: https://github.com/aerospaceresearch/gcp-osm
+Get the highest level of precision for your drone & satellite data and automate it with [OpenStreetMap.org](https://openstreetmap.org)
+
+
+## Participate
+
+  * Find our code on Github
+    * [osm.to](https://github.com/aerospaceresearch/gcp-osm)
+	* [gcp-osm](https://github.com/aerospaceresearch/gcp-osm)
+  * Chat with us on
+    * our [Zulip Chat](https://aerospaceresearch.zulipchat.com/#narrow/stream/200712-gcp-osm)
+  * Support our friends
+    * [OpenStreetMap.org](https://openstreetmap.org)
+	
+	
+## Follow us
+
+On [Twitter.com/osm_to](https://twitter.com/osm_to)
+On [SpaceApps.org/osmto](https://2021.spaceappschallenge.org/challenges/statements/drones-and-satellites-for-urban-development/teams/osmto/project)
+
+![[Image of SpaceApps](https://2021.spaceappschallenge.org/challenges/statements/drones-and-satellites-for-urban-development/teams/osmto/project)](https://www.spaceapps.earth/img/logos/space-app-logo.png)
