@@ -20,7 +20,7 @@ Get the highest level of precision for your drone & satellite data and automate 
 	
 ## Follow us
 
-On [Twitter.com/osm_to](https://twitter.com/osm_to)
-On [SpaceApps.org/osmto](https://2021.spaceappschallenge.org/challenges/statements/drones-and-satellites-for-urban-development/teams/osmto/project)
+  * On [Twitter.com/osm_to](https://twitter.com/osm_to)
+  * On [SpaceAppsChallenge.org/osmto](https://2021.spaceappschallenge.org/challenges/statements/drones-and-satellites-for-urban-development/teams/osmto/project)
 
 ![[Image of SpaceApps](https://2021.spaceappschallenge.org/challenges/statements/drones-and-satellites-for-urban-development/teams/osmto/project)](https://www.spaceapps.earth/img/logos/space-app-logo.png)
