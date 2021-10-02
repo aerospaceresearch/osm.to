@@ -11,16 +11,13 @@
 ################## extension convert shortlink to geo loc
 # started by uwe 2nd of october 2021
 # def _decode(shortLink):
-        """generate interleved code from String"""   
+ #       """generate interleved code from String"""   
 
 # def _deinterleave(codeEndcode):
-        """split 64 bit integer to two 32 bit integers"""
+#       """split 64 bit integer to two 32 bit integers"""
 
 # next steps
-# deal with trailing "-" character
-# 
-
-
+# run tests
 ########### end comment extension
 
 ARRAY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_~'
@@ -50,18 +47,12 @@ def _encode(lat, lon, z):
     str = ''
     # add eight to the zoom level, which approximates an accuracy of
     # one pixel in a tile.
-    #print("code",code )
-
     for i in range(int(math.ceil((z + 8) / 3.0))):
         digit = (code >> (56 - 6 * i)) & 0x3f;
-        print("(56 - 6 * i)", (56 - 6 * i))
-        print("code shifted",(code >> (56 - 6 * i)) )
         str += ARRAY[digit]
-        print("str", str)
     # append characters onto the end of the string to represent
     # partial zoom levels (characters themselves have a granularity
     # of 3 zoom levels).
-    _decode(str)
     for i in range((z + 8) % 3):
         str += "-"
     return str
@@ -69,19 +60,20 @@ def _encode(lat, lon, z):
 def _decode(shortLink):
         """generate interleved code from String"""    
         codeEndcode = 0
+  #      shortLink = shortLink.replace("-", "")
         for i in range(len(shortLink)):
             print(shortLink[i])
-            print("array index", ARRAY.index(shortLink[i]))
-            tmp = ARRAY.index(shortLink[i])
+            print(i)
+            print("array index", ARRAY.index(shortLink[len(shortLink)-1-i]))
+            tmp = ARRAY.index(shortLink[len(shortLink)-1-i])
             codeEndcode = ((codeEndcode<<6) | (tmp))
             print(codeEndcode)
-            return codeEndcode
+        return codeEndcode
 
 def _deinterleave(codeEndcode):
         """split 64 bit integer to two 32 bit integers"""
         x = 0
         y = 0
-        shift = 2^64
         for i in range(64,0,-2):
             tmp = (codeEndcode >> i) & 1
             x = ((x | tmp)  << 1)
@@ -91,9 +83,16 @@ def _deinterleave(codeEndcode):
             print( ((codeEndcode ) & (2**i )))
             print("codeEndcode << i",codeEndcode << i)
             print("x",x << 1)
-        return x, y
+        x = x << 1 # check why last shift it necessary
+        # convert to long und lat
+        lon = y / 2**32*360 -180
+        lat = x / 2**32 *180 -90
+      #  x = int((lon + 180.0) * 2**32 / 360.0)
+     #   y = int((lat +  90.0) * 2**32 / 180.0)
 
 
+
+        return lon, lat
 
 
 def _interleave(x, y):
@@ -110,9 +109,9 @@ def _interleave(x, y):
 
 if __name__ == '__main__':
     # testing
-    _deinterleave(3753759947717361664)
-  #  _decode("0GAjIv8h")
-    print (short_osm(50.671530961990356, 6.09715461730957))
+    #_deinterleave(3753759947717361664)
+    #_decode('0GAjIv8h')
+    #print (short_osm(50.671530961990356, 6.09715461730957))
     print (short_osm(50.671530961990356, 6.09715461730957, 10))
     print (short_osm(50.671530961990356, 6.09715461730957, 5))
     print (short_osm(50.671530961990356, 6.09715461730957, 4))
