@@ -9,6 +9,7 @@
 # URL-friendly.
 
 ################## extension convert shortlink to geo loc
+# started by uwe 2nd of october 2021
 # def _decode(shortLink):
         """generate interleved code from String"""   
 
