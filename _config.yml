@@ -1,1 +1,10 @@
 theme: jekyll-theme-cayman
+
+navbar-links:
+  legal: "legal"
+  Resources:
+    - Repo of main project: "https://github.com/aerospaceresearch/gcp-osm"
+
+social-network-links:
+  twitter: osm_to
+  
