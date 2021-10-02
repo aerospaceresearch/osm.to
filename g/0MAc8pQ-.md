@@ -4,8 +4,28 @@ permalink: /:path/:basename
 
 # Ground Control Point
 
-Hi, you have found a GroundControlPoint. It is used to geo-reference aerial images.
+Hi, you have found an OSM.to GroundControlPoint (GCP). It is used to georeference aerial images.
 
-This particular one has an OSM shortlink, which is a calculated coordinate. This one links to the [City of Jena, Germany](https://osm.org/go/0MAc8pQ-)
+## Location
 
-To find out more, how they work and how to use them, have a look at the [gcp-osm project page](https://github.com/aerospaceresearch/gcp-osm).
+You are here!
+
+  * geo:
+    * longitude: 11.4999
+    * latitude: 50.9227/11.4999
+    * altitude: None
+  * openstreetmap:
+    * link: https://www.openstreetmap.org/#map=11/50.9227/11.4999
+    * shortlink: https://osm.org/go/0MAc8pQ-
+
+## Data
+
+This data is in the qr-code.
+
+  *osm_to:
+    * link: https://osm.to/
+	* type_indicator: g/
+	* payload: 0MAc8pQ-
+	
+
+This particular GCP has only an ID, which is not permanently linked to a coordinate. To find out more, how they work and how to use them, have a look at the [gcp-osm project page](https://github.com/aerospaceresearch/gcp-osm).
