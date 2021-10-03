@@ -10,6 +10,9 @@
 
 ################## extension convert shortlink to geo loc
 # started by uwe 2nd of october 2021
+# can be tested with http://www.salesianer.de/util/osmshortlinks.php 
+# test was successful
+# run shortlinkToGeoLoc('blqoe1mcc-') to get lon, lat back
 # def _decode(shortLink):
  #       """generate interleved code from String"""   
 
@@ -57,18 +60,41 @@ def _encode(lat, lon, z):
         str += "-"
     return str
 
+def _interleave(x, y):
+    """combine 2 32 bit integers to a 64 bit integer"""
+    c = 0
+    for i in range(31, 0, -1):
+      c = (c << 1) | ((x >> i) & 1)
+      c = (c << 1) | ((y >> i) & 1)
+    return c
+
+# def _decode(shortLink):
+#         """generate interleved code from String"""    
+#         codeEncode = 0
+#         shortLink = shortLink.replace("-", "")
+#         for i in range(len(shortLink)):
+#             print(shortLink[i])
+#             print(i)
+#             print("array index", ARRAY.index(shortLink[i]))
+#             tmp = ARRAY.index(shortLink[i])
+#             codeEncode = codeEncode<<6
+#             codeEncode = (codeEncode | tmp)
+#             print(codeEncode)
+#         codeEncode = codeEncode << 14
+#         print(codeEncode/3753759947717361664)
+#         return codeEncode
+
 def _decode(shortLink):
-        """generate interleved code from String"""    
-        codeEndcode = 0
-  #      shortLink = shortLink.replace("-", "")
+        codeEncode = 0
+        shortLink = shortLink.replace("-", "")
         for i in range(len(shortLink)):
-            print(shortLink[i])
-            print(i)
-            print("array index", ARRAY.index(shortLink[len(shortLink)-1-i]))
-            tmp = ARRAY.index(shortLink[len(shortLink)-1-i])
-            codeEndcode = ((codeEndcode<<6) | (tmp))
-            print(codeEndcode)
-        return codeEndcode
+            # print(shortLink[i])
+            # print(i)
+            # print("array index", ARRAY.index(shortLink[i]))
+            tmp = ARRAY.index(shortLink[i])
+            codeEncode = codeEncode + tmp *2**(56-6*i)
+            #print(codeEncode)
+        return codeEncode  
 
 def _deinterleave(codeEndcode):
         """split 64 bit integer to two 32 bit integers"""
@@ -87,34 +113,28 @@ def _deinterleave(codeEndcode):
         # convert to long und lat
         lon = y / 2**32*360 -180
         lat = x / 2**32 *180 -90
-      #  x = int((lon + 180.0) * 2**32 / 360.0)
-     #   y = int((lat +  90.0) * 2**32 / 180.0)
-
-
 
         return lon, lat
 
-
-def _interleave(x, y):
-    """combine 2 32 bit integers to a 64 bit integer"""
-    c = 0
-    for i in range(31, 0, -1):
-      c = (c << 1) | ((x >> i) & 1)
-      c = (c << 1) | ((y >> i) & 1)
-    #   print("x",bin(x))
-    #   print("y",bin(y))
-    #   print("c",bin(c))
-    return c
+def shortlinkToGeoLoc(shortLink):
+    codeEndcode =_decode(shortLink)
+    lon, lat =_deinterleave(codeEndcode)
+    return lon, lat 
 
 
 if __name__ == '__main__':
     # testing
     #_deinterleave(3753759947717361664)
-    #_decode('0GAjIv8h')
+    #_deinterleave(229111324933921)
+    #_decodeAlt('0OAX--')
+    #_decode("0OAX1eNz3")
     #print (short_osm(50.671530961990356, 6.09715461730957))
-    print (short_osm(50.671530961990356, 6.09715461730957, 10))
-    print (short_osm(50.671530961990356, 6.09715461730957, 5))
-    print (short_osm(50.671530961990356, 6.09715461730957, 4))
-    print (short_osm(0, 0, 4))
+    print(shortlinkToGeoLoc('Ow~9LgzJJ-'))
+    #print(shortlinkToGeoLoc('0GAjIv8h'))    
+    print (short_osm(50.671530961990356, 6.09715461730957, 7))
+    #print (short_osm(50.671530961990356, 6.09715461730957, 5))
+    #print (short_osm(50.671530961990356, 6.09715461730957, 4))
+    print (short_osm(50.97551, 17.01142, 3))
+
     print (short_osm(0, 0, 3))
 
