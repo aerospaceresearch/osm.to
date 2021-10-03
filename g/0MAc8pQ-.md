@@ -12,7 +12,7 @@ You are here!
 
   * geo:
     * longitude: 11.4999
-    * latitude: 50.9227/11.4999
+    * latitude: 50.9227
     * altitude: None
   * openstreetmap:
     * link: [https://www.openstreetmap.org/#map=11/50.9227/11.4999](https://www.openstreetmap.org/#map=11/50.9227/11.4999)
