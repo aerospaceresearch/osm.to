@@ -10,7 +10,7 @@ Get the highest level of precision for your drone & satellite data and automate 
 ## Participate
 
   * Find our code on Github
-    * [osm.to](https://github.com/aerospaceresearch/gcp-osm)
+    * [osm.to](https://github.com/aerospaceresearch/osm.to)
 	* [gcp-osm](https://github.com/aerospaceresearch/gcp-osm)
   * Chat with us on
     * our [Zulip Chat](https://aerospaceresearch.zulipchat.com/#narrow/stream/200712-gcp-osm)
